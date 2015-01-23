@@ -2,6 +2,9 @@
 ## Coursera R-Programming "Programming Assignment 2"
 ## The assignment is to write a pair of functions that cache the inverse of a matrix.
 ##
+##
+## Results are included below (after the code)
+##
 
 ##
 ## This function creates a special "matrix" object that can cache its inverse.
@@ -11,16 +14,21 @@ makeCacheMatrix <- function(x = numeric()) {
 	cache <- NULL
 	
 ##	
-## Set the value of the vector	
+## Set the value of the vector
+## This function can actually be bypassed if the matrix is defined
+##   in makeCacheMatrix.
+##   I like to run makeCacheMatrix "empty" and define the matrix here.	
 ##
+
 	setMatrix <- function(newValue) {
 		x <<- newValue
 		cache <<- NULL
 	}
 	
 ##	
-## Get teh value of the vector
+## Get the value of the vector
 ##
+
 	getMatrix <- function() {
 		x
 	}
@@ -28,6 +36,7 @@ makeCacheMatrix <- function(x = numeric()) {
 ##	
 ## Cache the inverse of the vector
 ##
+
 	cacheInverse <- function(solve) {
 		cache <<- solve
 	}
@@ -71,3 +80,32 @@ cacheSolve <- function(y, ...) {
 	inverse
 }
 }
+
+##
+## RESULTS
+##
+
+## > a <- makeCacheMatrix()
+## > summary(a)
+             Length Class  Mode    
+## setMatrix    1      -none- function
+## getMatrix    1      -none- function
+## cacheInverse 1      -none- function
+## getInverse   1      -none- function
+## > 
+## > a$setMatrix( matrix(c(5,10,15,20), nrow=2, ncol=2) )
+## > a$getMatrix()
+##     [,1] [,2]
+## [1,]    5   15
+## [2,]   10   20
+## > 
+## > cacheSolve(a)
+##     [,1] [,2]
+## [1,] -0.4  0.3
+## [2,]  0.2 -0.1
+## > 
+## > cacheSolve(a)
+## getting cached data
+##     [,1] [,2]
+## [1,] -0.4  0.3
+## [2,]  0.2 -0.1
