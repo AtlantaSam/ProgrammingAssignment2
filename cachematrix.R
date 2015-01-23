@@ -5,6 +5,8 @@
 ##
 ## Results are included below (after the code)
 ##
+##
+##
 
 ##
 ## This function creates a special "matrix" object that can cache its inverse.
